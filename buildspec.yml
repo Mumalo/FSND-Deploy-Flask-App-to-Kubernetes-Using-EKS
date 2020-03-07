@@ -21,7 +21,7 @@ phases:
       - docker build --tag $REPOSITORY_URI:$TAG .
   env:
     parameter-store:
-      JWT_SECRET: JWT_SECRET
+      JWT_SECRET: jfjfldkfldk_kflfkl
 
   post_build:
     commands:
