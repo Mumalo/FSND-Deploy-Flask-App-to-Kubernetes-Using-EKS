@@ -17,7 +17,7 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
         - python3 -V
         - pip3 install -r requirements.txt
-        - pytest
+#        - pytest
   build:
     commands:
       - docker build --tag $REPOSITORY_URI:$TAG .
