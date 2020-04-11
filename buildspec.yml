@@ -17,7 +17,7 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
         - python3 -V
         - pip3 install -r requirements.txt
-#        - pytest
+        - pytest
   build:
     commands:
       - docker build --tag $REPOSITORY_URI:$TAG .
@@ -30,8 +30,8 @@ phases:
       - export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
-      - aws eks --region us-east-1 update-kubeconfig --name $EKS_CLUSTER_NAME
-#      - kubectl apply -f simple_jwt_api.yml
+      - aws eks --region us-east-2 update-kubeconfig --name $EKS_CLUSTER_NAME
+      - kubectl apply -f simple_jwt_api.yml
       - printf '[{"name":"simple_jwt_api.yml","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
       - pwd
       - ls
