@@ -36,7 +36,7 @@ phases:
       - pwd
       - ls
 artifacts:
-  files: build.json
+  files: '**/*'
 
 env:
   parameter-store:
