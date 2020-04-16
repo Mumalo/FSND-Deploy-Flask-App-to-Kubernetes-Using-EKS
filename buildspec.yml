@@ -31,7 +31,7 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
-      - kubectl --insecure-skip-tls-verify apply -f https://udacity-code-deployment-bucket.s3.us-east-2.amazonaws.com/deployment.yml
+      - kubectl --insecure-skip-tls-verify apply -f deployment.yml
       - printf '[{"name":"deployment.yml","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
       - pwd
       - ls
